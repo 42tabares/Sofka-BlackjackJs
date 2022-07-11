@@ -7,3 +7,7 @@ console.log("Open the game! please input your name!")
 
 let ASP = new Card("Ace of Spades")
 console.log(ASP.getValue(10))
+
+let Mace = new Deck()
+Mace.buildPlayingDeck()
+console.log(Mace)

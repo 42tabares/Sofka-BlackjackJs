@@ -3,21 +3,20 @@ let Card = require('./card.js');
 class Deck{
     
     constructor(){
-        cards = []
+        this.cards = []
     }
 
     buildPlayingDeck(){
-        let names = ["2","3","4","5","6","7","8","9","10","J","K","Q","A"]
+        let names = ["2","3","4","5","6","7","8","9","10","Jester","King","Queen","Ace"]
         let courts = ["Hearts","Spades","Diamonds","Clovers"]
 
-        for (i in names){
-            for (j in courts){
-
+        for (let i = 0; i < names.length; i++){
+            for (let j = 0; j < courts.length; j++){
+                let card = new Card(names[i] + " of " + courts[j])
+                this.cards.push(card)
             }
         }
     }
-
-
 }
 
 
