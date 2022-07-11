@@ -10,4 +10,9 @@ console.log(ASP.getValue(10))
 
 let Mace = new Deck()
 Mace.buildPlayingDeck()
+
+let tabares = new Player("Tabares")
+tabares.takeStartingDeck(Mace)
+tabares.takeRandomCard(Mace)
+console.log(tabares.deck)
 console.log(Mace)
