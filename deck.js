@@ -7,7 +7,7 @@ class Deck{
         this.value = 0
     }
 
-    buildPlayingDeck(){
+    buildMaceDeck(){
         let names = ["2","3","4","5","6","7","8","9","10","Jester","King","Queen","Ace"]
         let courts = ["Hearts","Spades","Diamonds","Clovers"]
 

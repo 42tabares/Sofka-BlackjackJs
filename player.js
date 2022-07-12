@@ -2,19 +2,50 @@ let Deck = require('./deck.js');
 
 class Player{
     
-    constructor(name){
+    constructor(name, isHuman){
         this.name = name;
+        this.cash = 0;
+        this.isPlaying = true;
+        this.isHuman = isHuman;
         this.deck = new Deck();
     }
 
     takeRandomCard(mace){
-        let i = Math.floor(Math.random() * (mace.cards.length+1)); 
-        this.deck.cards.push(mace.cards[i]);
-        mace.cards.splice(i, 1);
+        let i = Math.floor(Math.random() * (mace.cards.length+1)); //Selects a random number
+        this.deck.cards.push(mace.cards[i]); //Takes a random card from the Mace
+        mace.cards.splice(i, 1); //Eliminates the card from the Mace
     }
 
     takeStartingDeck(mace){
         while (this.deck.cards.length < 2){
+            this.takeRandomCard(mace)
+        }
+    }
+
+    checkStatus(){
+        this.deck.displayDeck()
+        if (this.deck.value > 21){
+            console.log(`${this.name} got ELIMINATED !!!`)
+            this.isPlaying = false
+        } else if (this.deck.value == 21){
+            console.log(`${this.name} got a ♤ ♡ BLACKJACK ♢ ♧`)
+        }
+    }
+
+    // This function simulates an AI player choosing if he should get a card from the mace
+    // The closer the deck is to 21, the less likely is to choose it
+    takeCardAI(mace){
+        let risk = this.deck.value - 11
+        let willTake = false
+        if (risk < 0){
+            willTake = true
+        } else {
+            let choiceFactor = 6 + Math.floor(Math.random() * (11))
+            if (risk < choiceFactor){
+                willTake = true
+            }
+        }
+        if (willTake === true){
             this.takeRandomCard(mace)
         }
     }
