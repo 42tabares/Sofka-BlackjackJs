@@ -4,14 +4,14 @@ class Card{
         this.name = name
     }
 
-    getValue(playerscore){
+    getValue(currentDeckValue){
         
         let cardType = this.name.split(" ");
         cardType = cardType[0];
         
         switch(cardType){
             case("Ace"): 
-                if (playerscore + 11 > 21){
+                if (currentDeckValue + 11 > 21){
                     return 1;
                 }else{
                     return 11;

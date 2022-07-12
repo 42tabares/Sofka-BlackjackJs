@@ -4,20 +4,21 @@ class Player{
     
     constructor(name){
         this.name = name;
-        this.deck = [];
+        this.deck = new Deck();
     }
 
     takeRandomCard(mace){
         let i = Math.floor(Math.random() * (mace.cards.length+1)); 
-        this.deck.push(mace.cards[i]);
+        this.deck.cards.push(mace.cards[i]);
         mace.cards.splice(i, 1);
     }
 
     takeStartingDeck(mace){
-        while (this.deck.length < 2){
+        while (this.deck.cards.length < 2){
             this.takeRandomCard(mace)
         }
     }
+
 }
 
 module.exports = Player;

@@ -4,6 +4,7 @@ class Deck{
     
     constructor(){
         this.cards = []
+        this.value = 0
     }
 
     buildPlayingDeck(){
@@ -17,6 +18,29 @@ class Deck{
             }
         }
     }
+
+    getDeckValue(){
+        this.value = 0
+        for(let i = 0; i < this.cards.length; i++){
+            //Below we must pass current's deck value to getValue() so it can assign a proper value to an Ace card if needed!
+            let cardValue = this.cards[i].getValue(this.value)  
+            this.value += cardValue;
+        }
+        return this.value
+    }
+
+    // Method for nicely displaying User's Deck
+    displayDeck(){
+        let deckDisplay = "♤ ♡  // ";
+        for(let i = 0; i < this.cards.length; i++){
+            deckDisplay = deckDisplay.concat(this.cards[i].name," // ")
+        }
+        deckDisplay = deckDisplay.concat(" ♢ ♧")
+        console.log(deckDisplay);
+        console.log("Deck Value = " + this.getDeckValue())
+    }
+
+
 }
 
 
