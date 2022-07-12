@@ -22,16 +22,19 @@ class Player{
         }
     }
 
-    checkStatus(){
+    showCards(){
+        console.log(this.name + "'s DECK:")
         this.deck.displayDeck()
         if (this.deck.value > 21){
-            console.log(`${this.name} got ELIMINATED !!!`)
+            console.log(`${this.name} got ELIMINATED !!! \n`)
             this.isPlaying = false
         } else if (this.deck.value == 21){
-            console.log(`${this.name} got a ♤ ♡ BLACKJACK ♢ ♧`)
+            console.log(`${this.name} got a ♤ ♡ BLACKJACK ♢ ♧ \n`)
         }
     }
 
+/*
+    AI players couldn't be implemented due to short time for delivery :(
     // This function simulates an AI player choosing if he should get a card from the mace
     // The closer the deck is to 21, the less likely is to choose it
     takeCardAI(mace){
@@ -49,7 +52,8 @@ class Player{
             this.takeRandomCard(mace)
         }
     }
-
+*/
 }
+
 
 module.exports = Player;

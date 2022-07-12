@@ -37,7 +37,7 @@ class Deck{
         }
         deckDisplay = deckDisplay.concat(" ♢ ♧")
         console.log(deckDisplay);
-        console.log("Deck Value = " + this.getDeckValue())
+        console.log("Deck Value = " + this.getDeckValue() + "\n")
     }
 
 
