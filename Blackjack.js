@@ -5,7 +5,7 @@ let prompt = require('prompt-sync')();
 
 
 
-console.log("♤ ♡ ♢ ♧ BLACKJACK ♧ ♢ ♡ ♤")
+console.log("\n♤ ♡ ♢ ♧ BLACKJACK ♧ ♢ ♡ ♤")
 console.log("Open the game! please select the quantity of Players")
 
 numberOfPlayers = 0
@@ -16,7 +16,7 @@ while (numberOfPlayers > 4 || numberOfPlayers <= 0){
 listOfPlayers = []
 for(let i = 1; i <= numberOfPlayers; i++){
     newPlayerName       = prompt(`Player ${i} Name > `) 
-    newPlayer           = new Player(newPlayerName, true)
+    newPlayer           = new Player(newPlayerName)
     listOfPlayers.push(newPlayer)
 }
 
@@ -29,14 +29,16 @@ while (runGame === "Y"){
     round1 = new Round(listOfPlayers)
     console.log("\nTHE GAME STARTS! THE CARDS ARE THROWN!\n")
     round1.startGame(mace)
-        
-    for (let i = 1; i < 3; i++) {
+    
+    roundNumber = 1
+    while (round1.playing && roundNumber < 3) {
         round1.playRound(mace)
+        roundNumber++
     }
-
-    round1.checkWinners()
+    
+    round1.returnWinners()
     runGame = prompt("Will the players play again? (Y/N) > ")
 }
 
-console.log("END OF THE GAME!")
+console.log("♤ ♡ ♢ ♧ END OF THE GAME! ♧ ♢ ♡ ♤\n")
 

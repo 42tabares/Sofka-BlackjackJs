@@ -2,11 +2,10 @@ let Deck = require('./deck.js');
 
 class Player{
     
-    constructor(name, isHuman){
+    constructor(name){
         this.name = name;
-        this.cash = 0;
+        this.cash = 5000;
         this.isPlaying = true;
-        this.isHuman = isHuman;
         this.deck = new Deck();
     }
 
@@ -28,8 +27,10 @@ class Player{
         if (this.deck.value > 21){
             console.log(`${this.name} got ELIMINATED !!! \n`)
             this.isPlaying = false
+            this.cash -= 1000
         } else if (this.deck.value == 21){
             console.log(`${this.name} got a ♤ ♡ BLACKJACK ♢ ♧ \n`)
+            this.isPlaying = false
         }
     }
 
