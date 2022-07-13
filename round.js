@@ -69,7 +69,7 @@ class Round{
         if (areWinners){
             let minValue = Math.min(...scores)
             this.players.forEach(player => {  
-                if (player.deck.value == minValue){
+                if ((21 - player.deck.value) === minValue){
                     console.log(`${player.name} WINS 1000\$ \n`)
                     player.cash += 1000
                 }
