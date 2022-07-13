@@ -1,4 +1,5 @@
 let prompt = require('prompt-sync')();
+let Deck = require('./Deck.js');
 
 class Round{
     
@@ -18,6 +19,7 @@ class Round{
 
     startGame(mace){
         this.players.forEach(player => {
+            player.deck = new Deck()
             player.takeStartingDeck(mace)
             player.showCards()
         });
@@ -31,7 +33,7 @@ class Round{
                     player.takeRandomCard(mace)
                     player.showCards()
                 } else {
-                    console.log(player.name + " FREEZES !!!")
+                    console.log(player.name + "\n FREEZES !!! \n")
                     player.isPlaying = false
                 }
             }
@@ -50,22 +52,36 @@ class Round{
         }
     }
 
+    //STOP
+
     returnWinners(){
         let scores = []
-        this.players.forEach(player => {
-            if (player.deck.value <= 21){
-                let score = 21 - player.deck.value
-                scores.push(score)
+
+        this.players.forEach(player => { 
+
+            let playerScore = 21 - player.deck.value
+            if (playerScore < 0){
+                playerScore = 1000
             }
+            scores.push(playerScore)
         })
-        if (scores !== []) {
+
+        let areWinners = scores.some(v => v < 21)
+
+        if (areWinners){
             let minValue = Math.min(...scores)
             let winner = scores.indexOf(minValue)
             console.log(this.players[winner].name + " WINS 1000$ \n")
+            this.players[winner].cash += 1000
         } else {
             console.log("NO WINNERS THIS ROUND! \n")
         }
     }
-}
 
+    displayCash(){
+        this.players.forEach(player => {
+            console.log(player.name + "'s CASH: " + player.cash + "\n")
+        })    
+    }
+}
 module.exports = Round;

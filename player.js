@@ -10,7 +10,7 @@ class Player{
     }
 
     takeRandomCard(mace){
-        let i = Math.floor(Math.random() * (mace.cards.length+1)); //Selects a random number
+        let i = Math.floor(Math.random() * (mace.cards.length)); //Selects a random number
         this.deck.cards.push(mace.cards[i]); //Takes a random card from the Mace
         mace.cards.splice(i, 1); //Eliminates the card from the Mace
     }
@@ -25,7 +25,7 @@ class Player{
         console.log(this.name + "'s DECK:")
         this.deck.displayDeck()
         if (this.deck.value > 21){
-            console.log(`${this.name} got ELIMINATED !!! \n`)
+            console.log(`${this.name} got ELIMINATED and lost 1000$!!! \n`)
             this.isPlaying = false
             this.cash -= 1000
         } else if (this.deck.value == 21){

@@ -37,8 +37,11 @@ while (runGame === "Y"){
     }
     
     round1.returnWinners()
+    round1.displayCash()
+
     runGame = prompt("Will the players play again? (Y/N) > ")
 }
 
-console.log("♤ ♡ ♢ ♧ END OF THE GAME! ♧ ♢ ♡ ♤\n")
+console.log("\n♤ ♡ ♢ ♧ END OF THE GAME! ♧ ♢ ♡ ♤\n")
+round1.displayCash()
 
