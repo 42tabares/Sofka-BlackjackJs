@@ -33,7 +33,7 @@ class Round{
                     player.takeRandomCard(mace)
                     player.showCards()
                 } else {
-                    console.log(player.name + "\n FREEZES !!! \n")
+                    console.log(`\n${player.name} FREEZES !!! \n`)
                     player.isPlaying = false
                 }
             }
@@ -52,8 +52,6 @@ class Round{
         }
     }
 
-    //STOP
-
     returnWinners(){
         let scores = []
 
@@ -70,9 +68,12 @@ class Round{
 
         if (areWinners){
             let minValue = Math.min(...scores)
-            let winner = scores.indexOf(minValue)
-            console.log(this.players[winner].name + " WINS 1000$ \n")
-            this.players[winner].cash += 1000
+            this.players.forEach(player => {  
+                if (player.deck.value == minValue){
+                    console.log(`${player.name} WINS 1000\$ \n`)
+                    player.cash += 1000
+                }
+            })
         } else {
             console.log("NO WINNERS THIS ROUND! \n")
         }
@@ -80,7 +81,7 @@ class Round{
 
     displayCash(){
         this.players.forEach(player => {
-            console.log(player.name + "'s CASH: " + player.cash + "\n")
+            console.log(`${player.name}'s CASH: ${player.cash}\n`)
         })    
     }
 }
