@@ -20,10 +20,11 @@ class Deck{
     }
 
     getDeckValue(){
+        let oldValue = this.value
         this.value = 0
         for(let i = 0; i < this.cards.length; i++){
-            //Below we must pass current's deck value to getValue() so it can assign a proper value to an Ace card if needed!
-            let cardValue = this.cards[i].getValue(this.value)  
+            //Below we must pass the old deck value so it can assign a proper value to an Ace card (1 or 11) if needed!
+            let cardValue = this.cards[i].getValue(oldValue)  
             this.value += cardValue;
         }
         return this.value

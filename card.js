@@ -10,8 +10,8 @@ class Card{
         cardType = cardType[0];
         
         switch(cardType){
-            case("Ace"): 
-                if (currentDeckValue + 11 > 21){
+            case("Ace"):
+                if ((currentDeckValue + 11) > 21){
                     return 1;
                 }else{
                     return 11;
