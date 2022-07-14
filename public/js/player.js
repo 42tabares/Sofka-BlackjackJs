@@ -1,4 +1,4 @@
-let Deck = require('./deck.js');
+import Deck from './deck.js';
 
 class Player{
     
@@ -57,4 +57,4 @@ class Player{
 }
 
 
-module.exports = Player;
+export default Player;

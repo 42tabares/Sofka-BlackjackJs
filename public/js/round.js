@@ -1,5 +1,4 @@
-let prompt = require('prompt-sync')();
-let Deck = require('./Deck.js');
+import Deck from './Deck.js';
 
 class Round{
     
@@ -28,7 +27,6 @@ class Round{
     playRound(mace){
         this.players.forEach(player => {
             if (player.isPlaying){
-                let takeCard = prompt(`will ${player.name} take a card? (Y/N)> `)
                 if (takeCard == "Y"){
                     player.takeRandomCard(mace)
                     player.showCards()
@@ -85,4 +83,4 @@ class Round{
         })    
     }
 }
-module.exports = Round;
+export default Round;

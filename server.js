@@ -1,6 +1,7 @@
 // Express Setup
 const express = require('express')
 const open = require('open')
+const http = require('http')
 const app = express()
 const port = 8000
 
@@ -15,8 +16,15 @@ app.get('', (req,res) => {
 })
 
 // Server launch
-app.listen(port, () => console.log("Server running on " + port))
-open('http:localhost:'+ port)
+app.listen(port, err => {
+    if (err){
+        console.log("Something went wrong :c\n" + err)
+    } else {
+        console.log("Server running on " + port)
+        open('http:localhost:'+ port)
+    }
+})
+
 
 
 

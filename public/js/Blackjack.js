@@ -1,19 +1,26 @@
-const Player = require('./player.js');
-const Deck = require('./deck.js');
-const Round = require('./round.js');
-const prompt = require('prompt-sync')();
+import Player from './player.js';
+import Deck from './deck.js';
+import Round from './round.js';
 
-console.log("\n♤ ♡ ♢ ♧ BLACKJACK ♧ ♢ ♡ ♤")
-console.log("Open the game! please select the quantity of Players")
+const playersIndex = document.getElementById("players-input")
+const playersDecks = document.getElementById("players-decks")
 
+console.log(playersIndex)
+console.log(playersDecks)
+
+
+
+
+
+/*
 numberOfPlayers = 0
 while (numberOfPlayers > 4 || numberOfPlayers <= 0){
-    numberOfPlayers = prompt("> ")
+    //numberOfPlayers = prompt("> ")
 }
 
 listOfPlayers = []
 for(let i = 1; i <= numberOfPlayers; i++){
-    newPlayerName       = prompt(`Player ${i} Name > `) 
+    //newPlayerName       = prompt(`Player ${i} Name > `) 
     newPlayer           = new Player(newPlayerName)
     listOfPlayers.push(newPlayer)
 }
@@ -37,9 +44,7 @@ while (runGame === "Y"){
     round1.returnWinners()
     round1.displayCash()
 
-    runGame = prompt("Will the players play again? (Y/N) > ")
+    //runGame = prompt("Will the players play again? (Y/N) > ")
 }
-
-console.log("\n♤ ♡ ♢ ♧ END OF THE GAME! ♧ ♢ ♡ ♤\n")
-round1.displayCash()
+*/
 
