@@ -1,8 +1,30 @@
-const http = require('http')
+// Express Setup
+const express = require('express')
 const open = require('open')
-const fs = require('fs')
+const app = express()
 const port = 8000
 
+//Static file imports
+app.use(express.static('public'))
+app.use('/css', express.static(__dirname + 'public/css'))
+app.use('/js', express.static(__dirname + 'public/css'))
+
+
+app.get('', (req,res) => {
+    res.sendFile(__dirname + 'index.html')
+})
+
+// Server launch
+app.listen(port, () => console.log("Server running on " + port))
+open('http:localhost:'+ port)
+
+
+
+
+
+
+
+/*
 const server = http.createServer(function(req, res){
     res.writeHead(200, {'Content-Type' : 'text/html'})
 
@@ -25,3 +47,4 @@ server.listen(port, function(error){
         open('http:localhost:'+ port)
     }
 })
+*/
