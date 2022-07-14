@@ -1,9 +1,7 @@
-let Player = require('./player.js');
-let Deck = require('./deck.js');
+const Player = require('./player.js');
+const Deck = require('./deck.js');
 const Round = require('./round.js');
-let prompt = require('prompt-sync')();
-
-
+const prompt = require('prompt-sync')();
 
 console.log("\n♤ ♡ ♢ ♧ BLACKJACK ♧ ♢ ♡ ♤")
 console.log("Open the game! please select the quantity of Players")
