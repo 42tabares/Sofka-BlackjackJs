@@ -22,7 +22,7 @@ class Player{
     }
 
     updateStatus(){
-        if (this.deck.getDeckValue() = 21){
+        if (this.deck.getDeckValue() === 21){
             this.status = "BLACKJACK!!!";
         }else if (this.deck.getDeckValue() > 21){
             this.status = "LOST!!!";

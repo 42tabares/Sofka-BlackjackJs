@@ -28,7 +28,7 @@ input{
 
 h1 > span{
     color: var(--primary);
-    animation: ipsum 1s infinite linear alternate;
+    animation: lorem 1s infinite linear alternate-reverse;
 }
 
 h1 > span:nth-child(even){
@@ -104,14 +104,5 @@ h1 > span:nth-child(even){
     }
     to {
         color: black;
-    }
-}
-
-@keyframes ipsum {
-    from{
-        color: black;
-    }
-    to {
-        color: var(--secondary);
     }
 }
