@@ -7,7 +7,7 @@ In this game you can play with up to 4 players the classic Blackjack game, fully
 To install follow these steps:
 > * clone repository
 > * make sure you have npm installed!
-> * Run command: _node blackjack.js_ in console!
+> * Run command: _npm start_ in console from VScode!
 
 ## Players
 
