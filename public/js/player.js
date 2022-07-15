@@ -5,7 +5,7 @@ class Player{
     constructor(name){
         this.name = name;
         this.cash = 5000;
-        this.isPlaying = true;
+        this.status = "playing";
         this.deck = new Deck();
     }
 
@@ -17,22 +17,20 @@ class Player{
 
     takeStartingDeck(mace){
         while (this.deck.cards.length < 2){
-            this.takeRandomCard(mace)
+            this.takeRandomCard(mace);
         }
     }
 
-    showCards(){
-        console.log(this.name + "'s DECK:")
-        this.deck.displayDeck()
-        if (this.deck.value > 21){
-            console.log(`${this.name} got ELIMINATED and lost 1000$!!! \n`)
-            this.isPlaying = false
-            this.cash -= 1000
-        } else if (this.deck.value == 21){
-            console.log(`${this.name} got a ♤ ♡ BLACKJACK ♢ ♧ \n`)
-            this.isPlaying = false
+    updateStatus(){
+        if (this.deck.getDeckValue() = 21){
+            this.status = "blackjack";
+        }else if (this.deck.getDeckValue() > 21){
+            this.status = "lost";
+            this.cash -= 1000;
         }
     }
+
+
 
 /*
     AI players couldn't be implemented due to short time for delivery :(

@@ -2,12 +2,59 @@ import Player from './player.js';
 import Deck from './deck.js';
 import Round from './round.js';
 
-const playersIndex = document.getElementById("players-input")
+const addPlayerButton = document.getElementById("number-of-players-input")
+const playerNameInput = document.getElementById("player-name-input")
+const playerCheckout = document.getElementById("players-checkout")
+const deckHandler = document.getElementById("deck-handler")
 const playersDecks = document.getElementById("players-decks")
 
-console.log(playersIndex)
-console.log(playersDecks)
+addPlayerButton.addEventListener("click", savePlayer)
 
+let players =[]
+function savePlayer(event){
+    let playerName = playerNameInput.value
+    if (players.length < 4){
+        let newPlayer = new Player(playerName)
+        players.push(newPlayer)
+        playerCheckout.innerHTML += `<span>Name: ${newPlayer.name} Cash: ${newPlayer.cash}</span></br>`
+    }
+    playerNameInput.value = ''
+
+    if (players.length === 2){
+        document.getElementById('start-button').innerHTML += "<button id='start-game-button'>Start Game</button>"
+        document.getElementById('start-game-button').addEventListener("click", startRound)
+    }
+}
+
+function startRound(event){
+    let mace = new Deck()
+    mace.buildMaceDeck()
+    players.forEach(player => {
+        player.takeStartingDeck(mace)
+    })
+    document.getElementById('start-button').style.visibility = "hidden"
+    playerCheckout.style.visibility = "hidden"
+    deckHandler.style.visibility = "visible"
+}
+
+
+let playingGame = true
+
+
+
+
+
+
+/*
+function printInputs(){
+    let playerID = playersNames.children.length
+    if (playerID < 4){
+        playersNames.innerHTML += `<input type="text" id="Player_${playerID}">`;
+        document.getElementById(`Player_${playerID}`).onkeyup = savePlayer;
+    }
+}
+
+*/
 
 
 

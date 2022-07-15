@@ -31,7 +31,13 @@ class Deck{
     }
 
     // Method for nicely displaying User's Deck
-    displayDeck(){
+    deckToHTML(){
+        cardsFormat = ""
+        this.cards.forEach(card => {
+            cardsFormat = cardsFormat.concat("<div id='card'>",card.name,"</div>")
+        })
+        return cardsFormat
+        /*
         let deckDisplay = "♤ ♡  // ";
         for(let i = 0; i < this.cards.length; i++){
             deckDisplay = deckDisplay.concat(this.cards[i].name," // ")
@@ -39,6 +45,7 @@ class Deck{
         deckDisplay = deckDisplay.concat(" ♢ ♧")
         console.log(deckDisplay);
         console.log("Deck Value = " + this.getDeckValue() + "\n")
+        */
     }
 
 

@@ -1,3 +1,20 @@
 h1 {
     background-color: red;
 }
+
+
+#deck-handler {
+    visibility: hidden;
+}
+
+.containter{
+    width : 100%;
+    display : flex;
+    justify-content: center;
+}
+
+.deck-table{
+    width : 100%;
+    display : flex;
+    justify-content: space-around;
+}
