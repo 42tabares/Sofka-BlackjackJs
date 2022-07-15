@@ -2,11 +2,15 @@ import Player from './player.js';
 import Deck from './deck.js';
 import Round from './round.js';
 
-const addPlayerButton = document.getElementById("number-of-players-input")
-const playerNameInput = document.getElementById("player-name-input")
-const playerCheckout = document.getElementById("players-checkout")
-const deckHandler = document.getElementById("deck-handler")
-const playersDecks = document.getElementById("players-decks")
+const addPlayerButton       = document.getElementById("number-of-players-input")
+const playerNameInput       = document.getElementById("player-name-input")
+const playerCheckout        = document.getElementById("players-checkout")
+const playersDecks          = document.getElementById("players-decks")
+const deckHandler           = document.getElementById("deck-handler")
+const playerNameTurn        = deckHandler.children[0]
+const playerTakeCard        = deckHandler.children[1]
+const playerFreezeButton    = deckHandler.children[2]
+
 
 addPlayerButton.addEventListener("click", savePlayer)
 
@@ -16,27 +20,55 @@ function savePlayer(event){
     if (players.length < 4){
         let newPlayer = new Player(playerName)
         players.push(newPlayer)
-        playerCheckout.innerHTML += `<span>Name: ${newPlayer.name} Cash: ${newPlayer.cash}</span></br>`
+        playerCheckout.innerHTML += `<label>Name: ${newPlayer.name} Cash: ${newPlayer.cash}</label>`
     }
     playerNameInput.value = ''
 
     if (players.length === 2){
         document.getElementById('start-button').innerHTML += "<button id='start-game-button'>Start Game</button>"
-        document.getElementById('start-game-button').addEventListener("click", startRound)
+        document.getElementById('start-game-button').addEventListener("click", startGame)
     }
 }
 
-function startRound(event){
-    let mace = new Deck()
-    mace.buildMaceDeck()
-    players.forEach(player => {
-        player.takeStartingDeck(mace)
+playerTakeCard.addEventListener("click",takeCardChoice(true))
+playerFreezeButton.addEventListener("click",takeCardChoice(false))
+
+function takeCardChoice(willTake){
+    return new Promise((resolve, reject) => {
+        resolve(willTake);
     })
+}
+
+function startGame(event){
     document.getElementById('start-button').style.visibility = "hidden"
     playerCheckout.style.visibility = "hidden"
     deckHandler.style.visibility = "visible"
+    
+    let mace = new Deck()
+    mace.buildMaceDeck()
+
+    players.forEach(player => {
+        player.takeStartingDeck(mace)
+        playersDecks.innerHTML += player.toHTML()
+    })
+
+    players.forEach(player => {
+        if (player.status === "PLAYING"){
+            playerNameTurn.innerText = player.name + "'s TURN"
+
+            if (willTakeCard){
+                player.takeRandomCard(mace)
+                player.updateStatus()
+            } else {
+                player.status = "FREEZE"
+            }
+        }
+    })
 }
 
+async function takeCard(){
+    
+}
 
 let playingGame = true
 

@@ -10,15 +10,15 @@ class Card{
         cardType = cardType[0];
         
         switch(cardType){
-            case("Ace"):
+            case("A"):
                 if ((currentDeckValue + 11) > 21){
                     return 1;
                 }else{
                     return 11;
                 }
-            case("King"):
-            case("Queen"):
-            case("Jester"):
+            case("K"):
+            case("Q"):
+            case("J"):
                 return 10;
             default:
                 return Number(cardType);

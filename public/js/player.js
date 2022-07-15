@@ -5,7 +5,7 @@ class Player{
     constructor(name){
         this.name = name;
         this.cash = 5000;
-        this.status = "playing";
+        this.status = "PLAYING";
         this.deck = new Deck();
     }
 
@@ -23,13 +23,22 @@ class Player{
 
     updateStatus(){
         if (this.deck.getDeckValue() = 21){
-            this.status = "blackjack";
+            this.status = "BLACKJACK!!!";
         }else if (this.deck.getDeckValue() > 21){
-            this.status = "lost";
+            this.status = "LOST!!!";
             this.cash -= 1000;
         }
     }
 
+    toHTML(){
+        let playerFormat = `<div class='player' id="${this.name}">`
+        playerFormat = playerFormat.concat("<div class='deck'>",this.deck.toHTML(),"</div>")
+        playerFormat = playerFormat.concat("<div class='info'>",this.name,"</div>")
+        playerFormat = playerFormat.concat("<div class='info'>",this.status,"</div>")
+        playerFormat = playerFormat.concat("<div class='info'>",this.cash,"</div>")
+        playerFormat = playerFormat.concat("</div>")
+        return playerFormat
+    }
 
 
 /*

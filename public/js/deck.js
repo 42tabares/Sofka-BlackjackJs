@@ -8,12 +8,12 @@ class Deck{
     }
 
     buildMaceDeck(){
-        let names = ["2","3","4","5","6","7","8","9","10","Jester","King","Queen","Ace"]
-        let courts = ["Hearts","Spades","Diamonds","Clovers"]
+        let names = ["2","3","4","5","6","7","8","9","10","J","K","Q","A"]
+        let courts = ["♡","♤","♢","♧"]
 
         for (let i = 0; i < names.length; i++){
             for (let j = 0; j < courts.length; j++){
-                let card = new Card(names[i] + " of " + courts[j])
+                let card = new Card(names[i] + " " + courts[j])
                 this.cards.push(card)
             }
         }
@@ -31,12 +31,14 @@ class Deck{
     }
 
     // Method for nicely displaying User's Deck
-    deckToHTML(){
-        cardsFormat = ""
+    toHTML(){
+        let cardsFormat = ""
         this.cards.forEach(card => {
-            cardsFormat = cardsFormat.concat("<div id='card'>",card.name,"</div>")
+            cardsFormat = cardsFormat.concat("<div class='card'>",card.name,"</div>")
         })
         return cardsFormat
+
+        
         /*
         let deckDisplay = "♤ ♡  // ";
         for(let i = 0; i < this.cards.length; i++){

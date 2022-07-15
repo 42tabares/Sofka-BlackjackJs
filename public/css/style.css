@@ -1,10 +1,76 @@
-h1 {
-    background-color: red;
+body {
+    margin : 0px 50px 50px 50px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --background :#353b48;
+    --color : #f5f6fa;
+    --primary : #fbc531;
+    --secondary : #e84118;
+    --color2 : #2f3640;
+    background: var(--background);
+    color : var(--color);
 }
 
+button{
+    padding: 5px 20px;
+    border: 0px;
+    border-radius: 3px;
+    background: var(--primary);
+    color: var(--color2);
+    font-weight: bold;
+}
+
+input{
+    padding: 5px;
+    border-radius: 3px;
+    outline: none;
+    border: none;
+}
+
+h1 > span{
+    color: var(--primary);
+    animation: ipsum 1s infinite linear alternate;
+}
+
+h1 > span:nth-child(even){
+    color: var(--secondary);
+    animation: lorem 1s infinite linear alternate;
+}
+
+.main-title{
+    text-align: center;
+}
+
+.players-checkout{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 175px;
+}
+
+#start-button{
+    text-align: center;
+}
 
 #deck-handler {
     visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0px 20px;
+}
+
+.card {
+    background: var(--background);
+    padding: 15px 5px;
+    border-radius: 5px;
+    border: 2px solid var(--secondary)
+}
+
+.info{
+    display: inline-block;
+}
+
+.info:nth-child(3){
+    margin: 0px 5px;
 }
 
 .containter{
@@ -17,4 +83,35 @@ h1 {
     width : 100%;
     display : flex;
     justify-content: space-around;
+}
+
+
+.player{
+    background: var(--color2);
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.deck{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
+}
+
+@keyframes lorem {
+    from{
+        color: var(--secondary);
+    }
+    to {
+        color: black;
+    }
+}
+
+@keyframes ipsum {
+    from{
+        color: black;
+    }
+    to {
+        color: var(--secondary);
+    }
 }
