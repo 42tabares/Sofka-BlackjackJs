@@ -1,6 +1,6 @@
 # ♤ ♡ ♢ ♧ BLACKJACK JS ♧ ♢ ♡ ♤ 
 
-Welcome to Blackjack! a SofkaU project produced by Juan Jose Tabares
+Welcome to Blackjack! a project produced by Juan Jose Tabares
 
 In this game you can play with up to 4 players the classic Blackjack game, fully programmed on NodeJs!!
 
